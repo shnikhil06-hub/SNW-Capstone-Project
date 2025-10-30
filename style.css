@@ -1,0 +1,135 @@
+/* Basic reset and body styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Impact", "Arial Black", sans-serif; /* Using Impact for a similar blocky feel */
+    background-color: #1a1a1a; /* Dark background to see the bar */
+    color: #fff;
+}
+
+/* Main Navbar Container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(15, 20, 25, 0.85); /* Dark, semi-transparent background */
+    border-bottom: 1px solid #333;
+    backdrop-filter: blur(5px); /* Adds the frosted glass effect seen in many game UIs */
+}
+
+/* Left Section: Menu + Logo */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Space between the hamburger lines */
+}
+
+.menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 1px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Center Navigation Links */
+.nav-center {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 8px; /* Space between the link buttons */
+}
+
+/* Common style for the grey-blue link buttons */
+.nav-link {
+    display: block;
+    padding: 8px 12px;
+    background-color: rgba(100, 120, 140, 0.2);
+    border: 1px solid #5a6875;
+    border-radius: 3px;
+    color: #c0c8d0;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(120, 140, 160, 0.4);
+    color: #fff;
+    border-color: #8899aa;
+}
+
+/* Right Section: Icon, Login, Pre-order */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 2px solid #5a6875;
+    border-radius: 50%; /* Makes it a circle */
+    color: #c0c8d0;
+    transition: all 0.2s ease;
+}
+
+.icon-link svg {
+    width: 20px;
+    height: 20px;
+    fill: #c0c8d0; /* SVG fill color */
+    transition: all 0.2s ease;
+}
+
+.icon-link:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.icon-link:hover svg {
+    fill: #fff;
+}
+
+/* The prominent blue "Pre-Order" button */
+.pre-order-btn {
+    padding: 10px 16px;
+    background-color: #0052cc; /* Strong blue color */
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+
+.pre-order-btn:hover {
+    background-color: #0066ff; /* Brighter blue on hover */
+}

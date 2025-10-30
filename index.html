@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DutyX</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            
+            <div class="dropdown">
+                <button class="dropdown-toggle" id="games-menu-toggle">
+                    GAMES +
+                </button>
+                <div class="dropdown-content" id="games-menu-content">
+                    <a href="#">Black Ops 7</a>
+                    <a href="#">Black Ops 6</a>
+                    <a href="#">COD: Warzone</a>
+                    <a href="#">Call of Duty Mobile</a>
+                </div>
+            </div>
+
+            <a href="#" class="logo">DutyX</a>
+        </div>
+
+        <ul class="nav-center">
+            <li><a href="#" class="nav-link">MODERN WARFARE III</a></li>
+            <li><a href="#" class="nav-link">THE HAUNTING</a></li>
+            <li><a href="#" class="nav-link">BATTLE PASS</a></li>
+            <li><a href="#" class="nav-link">RECOUNT</a></li>
+            <li><a href="#" class="nav-link">TAC-ATLAS ></a></li>
+            <li><a href="#" class="nav-link">BLOG</a></li>
+            <li><a href="#" class="nav-link">GUIDES</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <a href="#" class="icon-link" aria-label="Login">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12ZM12 14C8.68629 14 6 16.6863 6 20H18C18 16.6863 15.3137 14 12 14Z"/>
+                </svg>
+            </a>
+            <a href="#" class="nav-link">LOGIN</a>
+            <a href="#" class="pre-order-btn">PRE-ORDER BLACK OPS 6</a>
+        </div>
+    </nav>
+
+    <script>
+        const menuToggle = document.getElementById('games-menu-toggle');
+        const dropdownContent = document.getElementById('games-menu-content');
+
+        // Show/hide menu on button click
+        menuToggle.addEventListener('click', () => {
+            // Use 'block' to show, 'none' to hide
+            const isHidden = dropdownContent.style.display === 'none' || dropdownContent.style.display === '';
+            dropdownContent.style.display = isHidden ? 'block' : 'none';
+        });
+
+        // Optional: Hide menu if user clicks outside of it
+        window.addEventListener('click', function(event) {
+            // Check if the click was outside the button AND outside the dropdown content
+            if (!menuToggle.contains(event.target) && !dropdownContent.contains(event.target)) {
+                dropdownContent.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
