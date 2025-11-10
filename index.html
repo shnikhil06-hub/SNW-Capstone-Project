@@ -1,71 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DutyX</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wolverine</title>
+  <link rel="stylesheet" href="styles.css">
+   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #060712 0%, #0b1220 100%);
+      color: #e6eef8;
+    }
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 28px;
+  background: rgba(9,16,35,0.9); 
+  border-bottom: 1px solid rgba(0,194,255,0.09);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+    .nav-left, .nav-center, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.6em;
+      font-weight: 800;
+      text-decoration: none;
+      background: linear-gradient(90deg, #00c2ff, #7a00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 1px;
+      padding: 6px 12px;
+      border-radius: 10px;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .logo:hover {
+      transform: translateY(-3px) scale(1.02);
+      text-shadow: 0 8px 30px rgba(122, 0, 255, 0.22);
+    }
+
+    .nav-center {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-center li {
+      display: inline-block;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #dff9ff;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #7a00ff;
+      text-shadow: 0 0 8px rgba(122,0,255,0.7);
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .search-bar input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #dff9ff;
+      padding: 8px 12px;
+      width: 160px;
+    }
+
+    .search-button {
+      background: linear-gradient(90deg, #00c2ff, #7a00ff);
+      border: none;
+      color: #061322;
+      font-weight: 700;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-left: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .accent-line {
+      height: 6px;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #00c2ff, #7a00ff);
+      margin-top: 70px; /* offset for fixed navbar */
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo {
+      height: 28px;
+      width: auto;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #00c2ff, #7a00ff);
+      padding: 2px;
+    }
+
+    
+    .imagewolverine {
+      display: block;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center;
+      margin: 0;
+      padding: 0;
+    }
+    
+.chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: Arial, sans-serif;
+}
+.chat-btn {
+  background-color: #00c2ff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.chat-box {
+  display: none;
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  width: 220px;
+  background-color: #091023;
+  color: white;
+  border: 1px solid #00c2ff;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.chat-box input {
+  width: calc(100% - 10px);
+  padding: 5px;
+  margin-top: 8px;
+  border-radius: 4px;
+  border: none;
+}
+
+.chat-box .send-btn {
+  margin-top: 8px;
+  width: 100%;
+  background-color: #7a00ff;
+  color: white;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chat-container:hover .chat-box {
+  display: block;
+}
+.xbox, .playstation, .windows, .macos {
+  display: inline-block;
+  margin: 0 5px;
+  background: linear-gradient(90deg, #00c2ff, #7a00ff);
+  height: 30px;
+  width: auto;
+  min-width: 60px;
+  padding: 5px 12px;
+  line-height: 30px;
+  font-size: 40px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 20px;
+   
+  text-align: center;
+}
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      .search-bar input {
+        width: 120px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-left">
-            
-            <div class="dropdown">
-                <button class="dropdown-toggle" id="games-menu-toggle">
-                    GAMES +
-                </button>
-                <div class="dropdown-content" id="games-menu-content">
-                    <a href="#">Black Ops 7</a>
-                    <a href="#">Black Ops 6</a>
-                    <a href="#">COD: Warzone</a>
-                    <a href="#">Call of Duty Mobile</a>
-                </div>
-            </div>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="#" class="logo">Wolverine</a>
+    </div>
 
-            <a href="#" class="logo">DutyX</a>
+    <ul class="nav-center">
+      <li><a href="#" class="nav-link">THE HUNTING GROUNDS</a></li>
+      <li><a href="#" class="nav-link">BATTLE PASS</a></li>
+      <li><a href="#" class="nav-link">UPDATES</a></li>
+      <li><a href="#" class="nav-link">BLOG</a></li>
+      <li><a href="#" class="nav-link">GUIDES</a></li>
+
+    </ul>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <button class="search-button">🔍</button>
+    </div>
+
+    <div class="nav-right">
+      <a href="login.html" class="nav-link">LOGIN</a>
+      <img src="Gemini_Generated_Image_1q5h1y1q5h1y1q5h.png" alt="DutyX Logo" class="nav-logo">
+    </div>
+  </nav>
+
+  <div class="accent-line" aria-hidden="true"></div>
+
+
+  <div style="text-align: center;">
+    <img class="imagewolverine"
+      src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*5S3tVqX8M9oLEnCpV1F3jg.png"
+      alt="Wolverine Background">
+  </div>
+   <main>
+    <!-- accent line below navbar -->
+    
+
+    <!-- hero with background image and centered overlay text -->
+    <section class="hero" style="text-align: center;">
+      <div class="title-wrap" style="text-align: center;top: 45px; position: relative; color: #ffffff; text-shadow: 0 0 10px rgba(0,0,0,0.7);">
+        <div class="subtitle" style="font-size: 150px;">THE WOLVERINE</div>
+        <h1 class="title" style="font-size: 100px;">PULSE WAR</h1>
+        <h1>--------PLAY NOW---------</h1>
+        <div >
+          <button class="xbox">XBOX</button>
+          <button class="playstation">PLAYSTATION</button>
+          <button class="windows">WINDOWS</button>
+          <button class="macos">MACOS</button>
         </div>
 
-        <ul class="nav-center">
-            <li><a href="#" class="nav-link">MODERN WARFARE III</a></li>
-            <li><a href="#" class="nav-link">THE HAUNTING</a></li>
-            <li><a href="#" class="nav-link">BATTLE PASS</a></li>
-            <li><a href="#" class="nav-link">RECOUNT</a></li>
-            <li><a href="#" class="nav-link">TAC-ATLAS ></a></li>
-            <li><a href="#" class="nav-link">BLOG</a></li>
-            <li><a href="#" class="nav-link">GUIDES</a></li>
-        </ul>
+        <p>In a world ravaged by war and corruption, Pulse War: The Wolverine thrusts players into a dystopian future where humanity’s fate lies in the claws of 
+          one unbreakable mutant. As cybernetic armies rise and mutant experiments spiral out of control, Wolverine returns to the battlefield — a lone predator 
+          driven by vengeance and survival. With every slash of adamantium and surge of pulse energy, players will tear through neon-lit ruins, shadow labs,
+           and war-torn streets, battling enemies born of science and sin. Ruthless, relentless, and unstoppable — this is not just war. This is Pulse War: 
+           The Wolverine.</p>
 
-        <div class="nav-right">
-            <a href="#" class="icon-link" aria-label="Login">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12ZM12 14C8.68629 14 6 16.6863 6 20H18C18 16.6863 15.3137 14 12 14Z"/>
-                </svg>
-            </a>
-            <a href="#" class="nav-link">LOGIN</a>
-            <a href="#" class="pre-order-btn">PRE-ORDER BLACK OPS 6</a>
+        <div>
+          <iframe width="800" height="450" src="https://www.youtube.com/embed/s3pDMUWlA6I" frameborder="0" allowfullscreen>
+          </iframe>
         </div>
-    </nav>
+        
+      </div>
+    </section>
+  </main>
+ 
+<div class="chat-container">
+  <button class="chat-btn">💬</button>
 
-    <script>
-        const menuToggle = document.getElementById('games-menu-toggle');
-        const dropdownContent = document.getElementById('games-menu-content');
+  <div class="chat-box">
+    <h4>Chat</h4>
+    <p>Hello! How can we help you?</p>
+    <input type="text" placeholder="Type a message...">
+    <button class="send-btn">Send</button>
+  </div>
+</div>
 
-        // Show/hide menu on button click
-        menuToggle.addEventListener('click', () => {
-            // Use 'block' to show, 'none' to hide
-            const isHidden = dropdownContent.style.display === 'none' || dropdownContent.style.display === '';
-            dropdownContent.style.display = isHidden ? 'block' : 'none';
-        });
 
-        // Optional: Hide menu if user clicks outside of it
-        window.addEventListener('click', function(event) {
-            // Check if the click was outside the button AND outside the dropdown content
-            if (!menuToggle.contains(event.target) && !dropdownContent.contains(event.target)) {
-                dropdownContent.style.display = 'none';
-            }
-        });
-    </script>
 
 </body>
 </html>

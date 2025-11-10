@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Game Login — wolverine</title>
+  <style>
+    html, body { height: 100%;
+        margin: 0;
+        font-family:Arial;}
+
+    
+    body {
+      background: linear-gradient(180deg, #060712 0%, #0b1220 100%); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: 32px; 
+      color: #e6eef8;
+    }
+
+    .container{
+      width: 100%; 
+      max-width: 980px; 
+      display: grid; 
+      gap: 28px; 
+      align-items: center;
+    }
+
+    .hero{
+      padding: 28px 32px; 
+      border-radius: 12px; 
+      background: transparent; 
+      display:flex; 
+      flex-direction:column; 
+      gap:16px;
+    }
+
+    .hero h1{ font-size:28px; 
+        margin:0; 
+        color:#dff9ff; }
+    .hero p{ margin:0; 
+        color:#9fb3c9; 
+        font-size:15px;}
+
+    .card{
+      background: #091023; 
+      padding:28px; 
+      border-radius:14px; 
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6); 
+      border: 1px solid rgba(0,194,255,0.07);
+    }
+
+    form{ display:flex; 
+        flex-direction:column; 
+        gap:12px }
+    label{ font-size:13px; 
+        color:#cfeefc; 
+        margin-bottom:6px; 
+        display:block }
+
+    .field{ display:flex; 
+        flex-direction:column; 
+        gap:6px }
+
+    #password{
+      width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background: rgba(10,16,28,0.6); color: #e6f7ff; font-size:15px; outline:none
+    }
+
+    #email{
+      width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background: rgba(10,16,28,0.6); color: #e6f7ff; font-size:15px; outline:none
+    }
+    
+    .row{ display:flex; 
+        align-items:center; 
+        justify-content:space-between }
+    .chk{ display:flex; 
+        gap:8px; 
+        align-items:center }
+
+    .btn{
+      display:inline-block; 
+      padding:12px 14px; 
+      border-radius:10px; 
+      border:0; 
+      background: linear-gradient(90deg,#00c2ff,#7a00ff); 
+      color:#061322; 
+      font-weight:700; 
+      cursor:pointer; 
+      font-size:15px; 
+      text-decoration:none; 
+      text-align:center
+    }
+
+    .btn.secondary{ background: transparent; 
+        border: 1px solid rgba(255,255,255,0.06); 
+        color:#d6eaf6 }
+
+    .muted{ color:#93a6bd; 
+        font-size:13px }
+    .error{ color:#ff6b6b; 
+        font-size:13px }
+
+    .social{ display:flex; 
+        gap:8px }
+    .social a{ flex:1; 
+        padding:10px; 
+        border-radius:10px; 
+        border:1px solid rgba(255,255,255,0.04); 
+        background: rgba(255,255,255,0.02); 
+        display:inline-block; 
+        text-decoration:none; 
+        line-height:20px; 
+        color:#dff9ff; 
+        text-align:center }
+
+    .small{ font-size:13px }
+
+    
+    @media (max-width:900px){
+      .container{ grid-template-columns:1fr; 
+        max-width:540px }
+      .hero{ order:1 }
+      .card{ order:2 }
+    }
+
+    
+    .accent-line{ height:6px; 
+        border-radius:6px; 
+        background: linear-gradient(90deg,#00c2ff,#7a00ff); 
+        margin-top:8px }
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <section class="hero">
+      <h1>Wolverine</h1>
+      <p>Log in to access your player profile, loadouts and match history.</p>
+
+      <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
+        <div style="flex:1;padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 6px 18px rgba(0,0,0,0.6)">
+          <div style="font-size:13px;color:#9fb3c9">Secure access</div>
+          <div style="font-weight:700;margin-top:6px;color:#dff9ff">Two-factor recommended</div>
+            
+    </section>
+
+    <aside class="card" aria-labelledby="loginHeading">
+      <h2 id="loginHeading" style="margin:0 0 6px 0">Player Login</h2>
+      <div class="accent-line" aria-hidden="true"></div>
+      <p class="muted" style="margin-bottom:12px">Use your game account email and password to sign in.</p>
+
+      <form id="loginForm" action="#" method="post" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@game.com" required />
+          <div id="emailError" class="error" aria-live="polite" style="display:none">Please enter a valid email address.</div>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter your password" required />
+          <div id="pwdError" class="error" aria-live="polite" style="display:none">Password must be at least 6 characters.</div>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+          <label class="chk small" style="font-size: 12px;"><input id="remember" name="remember" type="checkbox"/> Remember me</label>
+          <a href="#" class="small muted">Forgot password?</a>
+        </div>
+
+        <div style="margin-top:8px;display:flex;gap:8px">
+          <button class="btn" type="submit">Enter</button>
+          <a href="#" class="btn secondary" role="button">Create account</a>
+        </div>
+
+        <div style="margin-top:12px;text-align:center" class="small muted">or continue with</div>
+
+        <div class="social" style="margin-top:8px">
+          
+          <a href="#" role="button">Continue with Google</a>
+        </div>
+
+        <div id="formMessage" style="margin-top:12px;display:none" aria-live="polite"></div>
+      </form>
+    </aside>
+  </main>
+
+  
+</body>
+</html>
