@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wolverine — Updates</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #060712 0%, #0b1220 100%);
+      color: #e6eef8;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 28px;
+      background: rgba(9,16,35,0.95);
+      border-bottom: 1px solid rgba(0,194,255,0.09);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .logo {
+      font-size: 2em;
+      font-weight: 900;
+      text-decoration: none;
+      background: linear-gradient(90deg,#00c2ff,#7a00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+    }
+    .nav-link {
+      text-decoration: none;
+      color: #dff9ff;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+    .nav-link:hover {
+      color: #7a00ff;
+      background: rgba(122,0,255,0.08);
+      text-shadow: 0 0 8px rgba(122,0,255,0.7);
+    }
+
+    .updates-container {
+      max-width: 1080px;
+      margin: 120px auto 60px;
+      padding: 0 24px;
+    }
+
+    .updates-hero {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .updates-title {
+      font-size: 3rem;
+      margin: 0 0 10px;
+      background: linear-gradient(90deg, #00c2ff, #7a00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 4px;
+    }
+
+    .updates-subtitle {
+      font-size: 1.05rem;
+      color: #9fb3c9;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 24px 0 30px;
+    }
+    .badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 1px solid rgba(0,194,255,0.35);
+      color: #cfeeff;
+      background: rgba(9,16,35,0.8);
+    }
+    .badge.patch { border-color: rgba(0,194,255,0.7); }
+    .badge.event { border-color: rgba(255,165,0,0.7); }
+    .badge.hotfix { border-color: rgba(255,99,132,0.8); }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+      padding-left: 18px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(0,194,255,0.3), rgba(122,0,255,0.4));
+      opacity: 0.9;
+    }
+
+    .update-card {
+      position: relative;
+      padding: 16px 18px 18px;
+      border-radius: 14px;
+      background: rgba(9,16,35,0.85);
+      border: 1px solid rgba(0,194,255,0.12);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .update-card::before {
+      content: "";
+      position: absolute;
+      left: -11px;
+      top: 18px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #00c2ff;
+      box-shadow: 0 0 12px rgba(0,194,255,0.9);
+    }
+    .update-card.event::before { background: orange; box-shadow: 0 0 12px rgba(255,165,0,0.9); }
+    .update-card.hotfix::before { background: #ff4d6a; box-shadow: 0 0 12px rgba(255,77,106,0.9); }
+
+    .update-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,194,255,0.22);
+      border-color: rgba(0,194,255,0.45);
+    }
+
+    .update-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .update-version {
+      font-size: 1.1rem;
+      font-weight: 800;
+      background: linear-gradient(90deg,#00c2ff,#7a00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .update-date {
+      font-size: 0.8rem;
+      color: #9fb3c9;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .update-title {
+      font-size: 1.2rem;
+      margin: 0 0 8px;
+      color: #e6f7ff;
+    }
+
+    .update-type-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .update-body {
+      font-size: 0.95rem;
+      color: #c7d6e8;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .update-list {
+      margin: 6px 0 0 16px;
+      padding: 0;
+      font-size: 0.93rem;
+      color: #b9c9e3;
+    }
+    .update-list li {
+      margin-bottom: 4px;
+    }
+
+    .tagline {
+      font-size: 0.8rem;
+      color: #7fa6ff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .upcoming-banner {
+      margin-top: 32px;
+      padding: 18px 18px;
+      border-radius: 14px;
+      border: 1px dashed rgba(0,194,255,0.4);
+      background: rgba(9,16,35,0.8);
+      text-align: center;
+      font-size: 0.95rem;
+      color: #cfeeff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(9,16,35,0.9);
+      border-top: 1px solid rgba(0,194,255,0.09);
+      margin-top: 60px;
+      font-size: 0.85rem;
+      color: #8b9bb3;
+    }
+
+    @media (max-width: 720px) {
+      .navbar {
+        padding: 10px 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+      .updates-title {
+        font-size: 2.3rem;
+      }
+      .updates-container {
+        margin-top: 110px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+
+<nav class="navbar">
+    <a href="index.html" class="logo">WOLVERINE</a>
+    <div class="nav-right">
+      <a href="the hunting.html" class="nav-link">THE HUNTING GROUNDS</a>
+      <a href="battle_pass.html" class="nav-link">BATTLE PASS</a>
+      <a href="update.html" class="nav-link" style="background: rgba(122,0,255,0.18);color:#a5bcff;">UPDATES</a>
+      <a href="blog.html" class="nav-link">BLOGS</a>
+      <a href="guides.html" class="nav-link">GUIDES</a>
+      <a href="login.html" class="nav-link">LOGIN</a>
+    </div>
+  </nav>
+
+  <main class="updates-container">
+    <header class="updates-hero">
+      <h1 class="updates-title">UPDATES</h1>
+      <p class="updates-subtitle">
+        Track every patch, balance tweak and event dropping into
+        <strong>Pulse War: The Wolverine</strong>. Stay sharp — the battlefield never stands still.
+      </p>
+
+      <div class="filters">
+        <span class="badge patch">Patch Notes</span>
+        <span class="badge event">Events</span>
+        <span class="badge hotfix">Hotfixes</span>
+      </div>
+    </header>
+
+    <section class="timeline" aria-label="Game updates timeline">
+
+      <article class="update-card patch">
+        <div class="update-header">
+          <span class="update-version">v1.3.0 — Steel City Showdown</span>
+          <span class="update-date">NOV 2025</span>
+        </div>
+        <h2 class="update-title">New Map, New Boss, New Ways to Bleed</h2>
+        <div class="update-type-badges">
+          <span class="badge patch">Patch</span>
+          <span class="badge">New Map</span>
+          <span class="badge">Boss Fight</span>
+        </div>
+        <p class="update-body">
+          The northern industrial zone opens up with <strong>Steel City</strong> — a dense vertical playground
+          of smokestacks, rail lines and rooftop ambush routes. At its core waits the new boss:
+          <em>The Iron Marshal</em>, a tactical mech built to punish reckless aggression.
+        </p>
+        <ul class="update-list">
+          <li>Added new map: <strong>Steel City</strong> to Hunt and Ranked playlists.</li>
+          <li>New boss encounter: <strong>The Iron Marshal</strong> with phase-based armor breaks.</li>
+          <li>Three new Pulse-augments for mid-air slash combos.</li>
+          <li>Improved wall-run detection and ledge grabbing responsiveness.</li>
+        </ul>
+        <p class="tagline">Sharpen your path. The city fights back.</p>
+      </article>
+
+    
+      <article class="update-card event">
+        <div class="update-header">
+          <span class="update-version">Limited-Time Event — Night Hunt</span>
+          <span class="update-date">OCT 2025</span>
+        </div>
+        <h2 class="update-title">Night Hunt: Earn the Lunar Claws</h2>
+        <div class="update-type-badges">
+          <span class="badge event">Event</span>
+          <span class="badge">Cosmetics</span>
+        </div>
+        <p class="update-body">
+          The city dips into blackout mode. Only neon, muzzle flashes and your instincts light the way.
+          Complete event contracts to unlock the exclusive <strong>Lunar Claws</strong> skin set
+          and animated player banner.
+        </p>
+        <ul class="update-list">
+          <li>New contracts focused on stealth takedowns and silent clears.</li>
+          <li>Earnable rewards: Lunar Claws, Lunar Banner, “Hunt in the Dark” title.</li>
+          <li>Bonus XP on all Night Hunt playlists.</li>
+        </ul>
+        <p class="tagline">When the lights go out, predators rise.</p>
+      </article>
+
+      <article class="update-card patch">
+        <div class="update-header">
+          <span class="update-version">v1.2.2 — Balance & Flow</span>
+          <span class="update-date">SEPT 2025</span>
+        </div>
+        <h2 class="update-title">Claw Flow, Titan Pain</h2>
+        <div class="update-type-badges">
+          <span class="badge patch">Patch</span>
+          <span class="badge">Balance</span>
+        </div>
+        <p class="update-body">
+          This patch focuses on tightening core combat: fluid combos for Wolverine,
+          clearer telegraphs for Titans, and more rewarding counter windows for skilled players.
+        </p>
+        <ul class="update-list">
+          <li>Increased combo buffer leniency on ground-to-air chain attacks.</li>
+          <li>Titan slam attacks now have clearer windup VFX and audio.</li>
+          <li>Reduced camera shake on repeated heavy hits for better readability.</li>
+          <li>Minor performance improvements on mid-spec PCs and consoles.</li>
+        </ul>
+        <p class="tagline">Faster reads, cleaner hits, sharper decisions.</p>
+      </article>
+
+     
+      <article class="update-card hotfix">
+        <div class="update-header">
+          <span class="update-version">Hotfix 1.2.1</span>
+          <span class="update-date">AUG 2025</span>
+        </div>
+        <h2 class="update-title">Princess Bar Spawn Fix & Stability</h2>
+        <div class="update-type-badges">
+          <span class="badge hotfix">Hotfix</span>
+          <span class="badge">Bug Fixes</span>
+        </div>
+        <p class="update-body">
+          Addressed critical issues affecting spawns and round flow in the Princess Bar map,
+          alongside several crash fixes reported by the community.
+        </p>
+        <ul class="update-list">
+          <li>Fixed rare bug causing players to spawn inside geometry near the back alley.</li>
+          <li>Resolved occasional crash when Titans spawned during wave 3 on low VRAM systems.</li>
+          <li>Improved collision on bar counter and upstairs balcony rails.</li>
+        </ul>
+        <p class="tagline">Thanks for the reports, hunters.</p>
+      </article>
+
+      
+      <article class="update-card patch">
+        <div class="update-header">
+          <span class="update-version">v1.0.0 — Global Launch</span>
+          <span class="update-date">JULY 2025</span>
+        </div>
+        <h2 class="update-title">Welcome to Pulse War: The Wolverine</h2>
+        <div class="update-type-badges">
+          <span class="badge patch">Launch</span>
+        </div>
+        <p class="update-body">
+          The war begins. Step into Neo-Madripoor as Wolverine and carve your path through
+          corrupted labs, burning streets and high-risk hunts.
+        </p>
+        <ul class="update-list">
+          <li>Story Campaign: 10 chapters across city districts and off-shore facilities.</li>
+          <li>Hunt Mode: 4-player co-op hunts versus Titans and experimental bio-weapons.</li>
+          <li>Competitive playlists with skill-based matchmaking and seasonal ranks.</li>
+          <li>Full controller and mouse+keyboard support across all platforms.</li>
+        </ul>
+        <p class="tagline">From here on, every cut writes history.</p>
+      </article>
+
+    </section>
+
+    <div class="upcoming-banner">
+      <strong>On the radar:</strong> New enemy archetypes, traversal challenges and a
+      co-op “Metro Run” mode are in active development. Watch this space for the next
+      dev update and roadmap reveal.
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2025 Wolverine. All rights reserved by Nikhil.
+  </footer>
+
+</body>
+</html>

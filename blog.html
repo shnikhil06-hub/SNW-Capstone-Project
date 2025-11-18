@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wolverine — Blogs</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #060712 0%, #0b1220 100%);
+      color: #e6eef8;
+    }
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 28px;
+      background: rgba(9,16,35,0.95);
+      border-bottom: 1px solid rgba(0,194,255,0.09);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+    .logo {
+      font-size: 2em;
+      font-weight: 900;
+      text-decoration: none;
+      background: linear-gradient(90deg, #00c2ff, #7a00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #dff9ff;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+    }
+    .nav-link:hover {
+      color: #7a00ff;
+      background: rgba(122,0,255,0.08);
+      text-shadow: 0 0 8px rgba(122,0,255,0.7);
+    }
+    .blog-container {
+      max-width: 1080px;
+      margin: 120px auto 60px;
+      padding: 0 24px;
+    }
+
+    .blog-title {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 18px;
+      background: linear-gradient(90deg, #00c2ff, #7a00ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .intro {
+      text-align: center;
+      font-size: 1.15rem;
+      color: #9fb3c9;
+      margin-bottom: 40px;
+    }
+
+    .posts-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .post-card {
+      background: rgba(9,16,35,0.8);
+      border: 1px solid rgba(0,194,255,0.07);
+      border-radius: 12px;
+      padding: 18px;
+      transition: transform .2s, box-shadow .2s;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .post-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 22px rgba(0,194,255,0.18);
+    }
+
+    .post-card h2 {
+      margin: 0 0 8px;
+      font-size: 1.4rem;
+      background: linear-gradient(90deg, #00c2ff, #7a00ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .post-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #c7d6e8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(9,16,35,0.9);
+      border-top: 1px solid rgba(0,194,255,0.09);
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">WOLVERINE</a>
+    <div class="nav-right">
+      <a href="the hunting.html" class="nav-link">THE HUNTING GROUNDS</a>
+      <a href="battle_pass.html" class="nav-link">BATTLE PASS</a>
+      <a href="update.html" class="nav-link">UPDATES</a>
+      <a href="blog.html" class="nav-link" style="background: rgba(122,0,255,0.18);color:#a5bcff;">BLOGS</a>
+      <a href="guides.html" class="nav-link">GUIDES</a>
+      <a href="login.html" class="nav-link">LOGIN</a>
+    </div>
+  </nav>
+
+  
+  <div class="blog-container">
+    <h1 class="blog-title">WAR JOURNAL</h1>
+    <p class="intro">Insights. Updates. Stories. Everything that fuels the hunt.</p>
+
+    <div class="posts-grid">
+
+      
+      <a href="#" class="post-card">
+        <h2>Pulse War Origins: How the Wolverine Went Rogue</h2>
+        <p>What turned a soldier into a shadow? Dive into the experiments that went too far.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Inside the Princess Bar: Every Informant Has a Price</h2>
+        <p>Deals fallen through. Fights over spilled secrets. A haven for the desperate.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Metal Titans: The Machines Designed to Kill Mutants</h2>
+        <p>AI warlords. Reinforced alloy. Adaptive aggression. And they want him dead.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Five Combat Styles Only Wolverine Players Can Master</h2>
+        <p>From Berserkers to Shadow Hunters — find your path and slash like a legend.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Traversal System Breakdown: Rooftops & Raw Fury</h2>
+        <p>Move. Jump. Slash. Repeat. How traversal becomes an art in Pulse War gameplay.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Weapon Spotlight: Adamantium Claws vs Pulse-Tech Blades</h2>
+        <p>Steel meets laser. Primal strength meets engineered precision.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Neo-Madripoor: The City That Bleeds Neon and Crime</h2>
+        <p>A place where survival is more than instinct — it's strategy.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Mutant Gene Extraction Wars: The Science Behind the Conflict</h2>
+        <p>What corporations unlocked – and what they failed to control.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Villains of Pulse War: The Ones You Should Fear</h2>
+        <p>The most dangerous thing in the war zone might not be Wolverine.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Building Blade Physics: Making Every Slash Feel Real</h2>
+        <p>Game physics meets claws. The story behind responsive strikes.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>The Art of Rage: Designing Wolverine’s UI and HUD</h2>
+        <p>When visuals meet primal instinct — UI that pulses with adrenaline.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Performance Tuning for PC, Xbox, PlayStation & MacOS</h2>
+        <p>Optimizing the wild chaos for all platforms without compromise.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Community Challenge: 24-Hour Speedrun Blood Hunt</h2>
+        <p>Who will finish the story in a single run? With the fastest claws?</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Fan Art Spotlight – Steel & Rage Edition</h2>
+        <p>Featuring fan works that bring Pulse War and Wolverine to life.</p>
+      </a>
+
+      <a href="#" class="post-card">
+        <h2>Q&A With the Combat Director</h2>
+        <p>Fans ask. Devs answer. Everything behind the slash and burn.</p>
+      </a>
+
+    </div>
+  </div>
+
+
+  <footer>
+    <p>&copy; 2025 Wolverine. All rights reserved by Nikhil.</p>
+  </footer>
+</body>
+</html>

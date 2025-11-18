@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wolverine — Battle Pass</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #060712 0%, #0b1220 100%);
+      color: #e6eef8;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 28px;
+      background: rgba(9,16,35,0.95);
+      border-bottom: 1px solid rgba(0,194,255,0.09);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+    .logo {
+      font-size: 2em;
+      font-weight: 900;
+      text-decoration: none;
+      background: linear-gradient(90deg,#00c2ff,#7a00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+    }
+    .nav-link {
+      text-decoration: none;
+      color: #dff9ff;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+    .nav-link:hover {
+      color: #7a00ff;
+      background: rgba(122,0,255,0.08);
+      text-shadow: 0 0 8px rgba(122,0,255,0.7);
+    }
+    .bp-container {
+      max-width: 1080px;
+      margin: 120px auto 60px;
+      padding: 0 24px;
+    }
+
+    .bp-hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .bp-title {
+      font-size: 3rem;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg,#00c2ff,#7a00ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .bp-subtitle {
+      max-width: 680px;
+      margin: 0 auto;
+      color: #9fb3c9;
+      font-size: 1.1rem;
+    }
+
+    .battle-progress {
+      margin: 40px auto;
+      max-width: 740px;
+      text-align: center;
+    }
+
+    .progress-bar {
+      height: 12px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(0,194,255,0.12);
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 45%; 
+      background: linear-gradient(90deg, #00c2ff, #7a00ff);
+      transition: width 0.4s ease;
+    }
+
+    .progress-text {
+      margin-top: 8px;
+      color: #dff9ff;
+      font-size: 0.95rem;
+    }
+
+
+    .tiers-grid {
+      margin-top: 48px;
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    .tier-card {
+      background: rgba(9,16,35,0.85);
+      padding: 18px 20px;
+      border: 1px solid rgba(0,194,255,0.08);
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+      transition: transform .18s, box-shadow .18s;
+    }
+    .tier-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 28px rgba(0,194,255,0.21);
+    }
+
+    .tier-level {
+      color: #a6bcff;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .tier-reward {
+      font-size: 1.3rem;
+      margin: 0;
+      background: linear-gradient(90deg,#00c2ff,#7a00ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .tier-badge {
+      margin-top: 12px;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #c7dfff;
+      background: rgba(122, 0, 255, 0.08);
+    }
+
+    .premium-banner {
+      margin-top: 60px;
+      padding: 24px;
+      border: 1px dashed rgba(255,165,0,0.45);
+      border-radius: 14px;
+      background: rgba(9,16,35,0.85);
+      text-align: center;
+    }
+
+    .premium-banner h2 {
+      margin: 0 0 12px;
+      font-size: 1.8rem;
+      background: linear-gradient(90deg,#ffb400,#ff5f5f);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .premium-banner a {
+      display: inline-block;
+      margin-top: 8px;
+      background: linear-gradient(90deg,#00c2ff,#7a00ff);
+      padding: 10px 16px;
+      color: #061322;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .premium-banner a:hover {
+      background: linear-gradient(90deg,#7a00ff,#00c2ff);
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(9,16,35,0.9);
+      border-top: 1px solid rgba(0,194,255,0.09);
+      margin-top: 80px;
+      font-size: 0.85rem;
+      color: #8b9bb3;
+    }
+
+    @media (max-width: 768px) {
+      .bp-title {
+        font-size: 2.4rem;
+      }
+      .bp-subtitle {
+        font-size: 1rem;
+        padding: 0 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">WOLVERINE</a>
+    <div class="nav-right">
+      <a href="the hunting.html" class="nav-link">THE HUNTING GROUNDS</a>
+      <a href="battle_pass.html" class="nav-link" style="background: rgba(122,0,255,0.18);color:#a5bcff;">BATTLE PASS</a>
+      <a href="update.html" class="nav-link">UPDATES</a>
+      <a href="blog.html" class="nav-link">BLOGS</a>
+      <a href="guides.html" class="nav-link">GUIDES</a>
+      <a href="login.html" class="nav-link">LOGIN</a>
+    </div>
+  </nav>
+
+  <main class="bp-container">
+    
+    <header class="bp-hero">
+      <h1 class="bp-title">Battle Pass</h1>
+      <p class="bp-subtitle">Earn exclusive rewards like skins, titles, banners, claws, and beyond. Grind, slash, and conquer with unlimited style.</p>
+    </header>
+    
+    
+    <section class="battle-progress">
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+      <div class="progress-text">Tier 18 / 40 – <strong>45% completed</strong></div>
+    </section>
+
+    <section class="tiers-grid">
+
+      <div class="tier-card">
+        <div class="tier-level">Tier 1</div>
+        <h3 class="tier-reward">Pulse Blue Claws</h3>
+        <span class="tier-badge">FREE</span>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-level">Tier 5</div>
+        <h3 class="tier-reward">Neon Armor Shader</h3>
+        <span class="tier-badge">FREE</span>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-level">Tier 10</div>
+        <h3 class="tier-reward">Adamantium Banner</h3>
+        <span class="tier-badge">PREMIUM</span>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-level">Tier 16</div>
+        <h3 class="tier-reward">Shadowrun Pulse Dash</h3>
+        <span class="tier-badge">PREMIUM</span>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-level">Tier 18</div>
+        <h3 class="tier-reward">Lunar Claws Skin</h3>
+        <span class="tier-badge">FREE</span>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-level">Tier 25</div>
+        <h3 class="tier-reward">Predator Icon Set</h3>
+        <span class="tier-badge">PREMIUM</span>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-level">Tier 30</div>
+        <h3 class="tier-reward">Animated Blade Trail</h3>
+        <span class="tier-badge">PREMIUM</span>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-level">Tier 40</div>
+        <h3 class="tier-reward">Mythic Claw Form — RAGE MODE</h3>
+        <span class="tier-badge">PREMIUM</span>
+      </div>
+
+    </section>
+
+    <section class="premium-banner">
+      <h2>Upgrade to Battle Pass+</h2>
+      <p>Unlock all Premium rewards instantly, earn 50% XP boost, and equip exclusive animations.</p>
+      <a href="login.html">Buy Battle Pass</a>
+    </section>
+
+  </main>
+  <footer>
+    &copy; 2025 Wolverine. All rights reserved by Nikhil.
+  </footer>
+
+</body>
+</html>

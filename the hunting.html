@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hunting Grounds — Wolverine</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #0a0c14, #0f1423);
+      color: #e6eef8;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 28px;
+      background: rgba(9,16,35,0.95);
+      border-bottom: 1px solid rgba(0,194,255,0.09);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+
+    .logo {
+      font-size: 2em;
+      font-weight: 900;
+      text-decoration: none;
+      background: linear-gradient(90deg,#00c2ff,#7a00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #dff9ff;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+
+    .nav-link:hover {
+      color: #7a00ff;
+      background: rgba(122,0,255,0.08);
+      text-shadow: 0 0 8px rgba(122,0,255,0.7);
+    }
+    .map-container {
+      max-width: 1080px;
+      margin: 120px auto 60px;
+      padding: 0 24px;
+    }
+
+    .map-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .map-title {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #00c2ff, #7a00ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 12px;
+    }
+    .map-subtitle {
+      font-size: 1.1rem;
+      color: #9fb3c9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .map-section {
+      margin-bottom: 48px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .map-section.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .map-img {
+      flex: 1 1 400px;
+      max-width: 480px;
+      border-radius: 14px;
+      box-shadow: 0 8px 22px rgba(0,194,255,0.12);
+      overflow: hidden;
+    }
+    .map-img img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+    }
+
+    .map-info {
+      flex: 1 1 320px;
+      max-width: 540px;
+    }
+    .map-info h2 {
+      background: linear-gradient(90deg,#00c2ff,#7a00ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .map-info p {
+      color: #c7d6e8;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    .tag {
+      font-size: 0.75rem;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background: rgba(122,0,255,0.08);
+      border: 1px solid rgba(0,194,255,0.14);
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(9,16,35,0.9);
+      border-top: 1px solid rgba(0,194,255,0.1);
+      margin-top: 60px;
+      font-size: 0.85rem;
+      color: #8b9bb3;
+    }
+
+    @media (max-width: 768px) {
+      .map-title { font-size: 2.4rem; }
+      .map-info h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+ <nav class="navbar">
+    <a href="index.html" class="logo">WOLVERINE</a>
+    <div class="nav-right">
+      <a href="the hunting.html" class="nav-link" style="background: rgba(122,0,255,0.18);color:#a5bcff;">THE HUNTING GROUNDS</a>
+      <a href="battle_pass.html" class="nav-link">BATTLE PASS</a>
+      <a href="update.html" class="nav-link">UPDATES</a>
+      <a href="blog.html" class="nav-link">BLOGS</a>
+      <a href="guides.html" class="nav-link">GUIDES</a>
+      <a href="login.html" class="nav-link">LOGIN</a>
+    </div>
+  </nav>
+
+  <main class="map-container">
+
+    <header class="map-header">
+      <h1 class="map-title">THE HUNTING GROUNDS</h1>
+      <p class="map-subtitle">
+        These are the zones where skill meets savagery — where only the most tactical predators
+        survive. Learn the terrain, master the verticality, and make every strike count.
+      </p>
+    </header>
+
+    <section class="map-section">
+      <div class="map-img">
+        <img src="b1.png" alt="Neo-Madripoor Overview">
+      </div>
+      <div class="map-info">
+        <h2>NEO-MADRIPOOR</h2>
+        <p>
+          A city lost to mega-corporations and pulse-tech warlords. From neon-lit alleyways
+          to rooftop infiltration routes — every centimeter breeds opportunity or death.
+        </p>
+        <span class="tag">Large | Urban Warfare | Parkour Playground</span>
+      </div>
+    </section>
+
+    <section class="map-section reverse">
+      <div class="map-img">
+        <img src="b2.png" alt="The Princess Bar">
+      </div>
+      <div class="map-info">
+        <h2>THE PRINCESS BAR</h2>
+        <p>
+          Home to informants, shady alliances, and occasional ambushes. What starts as a bar
+          fight can end in a full-blown alley chase. Perfect for close-quarters ambush assists.
+        </p>
+        <span class="tag">Medium | Close Quarters | Target Extraction</span>
+      </div>
+    </section>
+
+    <section class="map-section">
+      <div class="map-img">
+        <img src="villan.png" alt="Steel City">
+      </div>
+      <div class="map-info">
+        <h2>STEEL CITY</h2>
+        <p>
+          Once a booming industrial zone, now a titan-infested fortress. Smokestacks and
+          crumbling platforms offer height advantages — as long as you don’t fall first.
+        </p>
+        <span class="tag">Large | Boss Zone | Vertical Combat</span>
+      </div>
+    </section>
+
+    <section class="map-section reverse">
+      <div class="map-img">
+        <img src="b3.png" alt="Wasteland Metro">
+      </div>
+      <div class="map-info">
+        <h2>WASTELAND METRO</h2>
+        <p>
+          Nothing but dim tunnels and broken lights. You’re never alone down here — every echo
+          could be your foe. Perfect for hunters who prefer the shadows.
+        </p>
+        <span class="tag">Small | Stealth | Environmental Hazards</span>
+      </div>
+    </section>
+
+    <section class="map-section">
+      <div class="map-img">
+        <img src="b4.png" alt="Rooftop Circuit">
+      </div>
+      <div class="map-info">
+        <h2>ROOFTOP CIRCUIT</h2>
+        <p>
+          Leap across collapsing bridges, sprint past pulse-fed generators, and ambush enemies
+          with mid-air takedowns. Speed and precision mean everything here.
+        </p>
+        <span class="tag">Medium | Mobility-Focused | Ambush-Friendly</span>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2025 Wolverine. All rights reserved by Nikhil.
+  </footer>
+</body>
+</html>
