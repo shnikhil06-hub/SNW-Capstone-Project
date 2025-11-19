@@ -64,11 +64,11 @@
         gap:6px }
 
     #password{
-      width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background: rgba(10,16,28,0.6); color: #e6f7ff; font-size:15px; outline:none
+      width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background: rgba(10,16,28,0.6); color: #e6f7ff; font-size:15px;
     }
 
     #email{
-      width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background: rgba(10,16,28,0.6); color: #e6f7ff; font-size:15px; outline:none
+      width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background: rgba(10,16,28,0.6); color: #e6f7ff; font-size:15px; 
     }
     
     .row{ display:flex; 
@@ -144,22 +144,22 @@
             
     </section>
 
-    <aside class="card" aria-labelledby="loginHeading">
+    <aside class="card" >
       <h2 id="loginHeading" style="margin:0 0 6px 0">Player Login</h2>
-      <div class="accent-line" aria-hidden="true"></div>
+      <div class="accent-line" ></div>
       <p class="muted" style="margin-bottom:12px">Use your game account email and password to sign in.</p>
 
-      <form id="loginForm" action="#" method="post" novalidate>
+      <form id="loginForm" action="#" method="post">
         <div class="field">
           <label for="email">Email</label>
           <input id="email" name="email" type="email" placeholder="you@game.com" required />
-          <div id="emailError" class="error" aria-live="polite" style="display:none">Please enter a valid email address.</div>
+          <div id="emailError" class="error" style="display:none">Please enter a valid email address.</div>
         </div>
 
         <div class="field">
           <label for="password">Password</label>
           <input id="password" name="password" type="password" placeholder="Enter your password" required />
-          <div id="pwdError" class="error" aria-live="polite" style="display:none">Password must be at least 6 characters.</div>
+          <div id="pwdError" class="error" style="display:none">Password must be at least 6 characters.</div>
         </div>
 
         <div class="row" style="margin-top:8px">
@@ -169,14 +169,14 @@
 
         <div style="margin-top:8px;display:flex;gap:8px">
           <button class="btn" type="submit">Enter</button>
-          <a href="account.html" class="btn secondary" role="button">Create account</a>
+          <a href="account.html" class="btn secondary">Create account</a>
         </div>
 
         <div style="margin-top:12px;text-align:center" class="small muted">or continue with</div>
 
         <div class="social" style="margin-top:8px">
           
-          <a href="#" role="button">Continue with Google</a>
+          <a href="#">Continue with Google</a>
         </div>
 
         <div id="formMessage" style="margin-top:12px;display:none"></div>

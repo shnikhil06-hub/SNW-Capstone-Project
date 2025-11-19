@@ -113,8 +113,14 @@
       box-shadow: 0 0 0 4px rgba(0,194,255,0.06);
     }
 
-    .row{ display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
-    .chk{ display:flex; gap:8px; align-items:flex-start; }
+    .row{ display:flex; 
+      align-items:flex-start; 
+      justify-content:space-between; 
+      gap:8px; }
+    .chk{ 
+      display:flex; 
+      gap:8px; 
+      align-items:flex-start; }
 
     .chk input{ margin-top:3px; }
     .btn{
@@ -129,7 +135,7 @@
       font-size:15px;
       text-decoration:none;
       text-align:center;
-      transition: transform .08s ease, opacity .08s ease;
+      transition: transform 0.08s ease, opacity 0.08s ease;
       user-select: none;
     }
     .btn:hover { transform: translateY(-1px); }
@@ -157,20 +163,20 @@
   </style>
 </head>
 <body>
-  <main class="container" role="main">
-    <section class="hero" aria-labelledby="brandHeading">
+  <main class="container">
+    <section class="hero" >
       <h1 id="brandHeading">Wolverine</h1>
       <p>Create your command profile to track ranks, unlocks and cross-device progress.</p>
     </section>
 
-    <aside class="card" aria-labelledby="signupHeading">
+    <aside class="card">
       <h2 id="signupHeading">Create Account</h2>
-      <div class="accent-line" aria-hidden="true"></div>
+      <div class="accent-line"></div>
       <p class="muted" style="margin-bottom:12px">
         Choose a unique tag, then secure your account with an email and password.
       </p>
 
-      <form id="signupForm" action="#" method="post" novalidate>
+      <form id="signupForm" action="#" method="post">
         <div class="field">
           <label for="playerName">Player tag</label>
           <input id="playerName" name="playerName" type="text" placeholder="Wolverine_01" required />
@@ -193,7 +199,7 @@
 
         <div class="row small" style="margin-top:4px;">
           <label class="chk">
-            <input id="terms" name="terms" type="checkbox" required />
+            <input id="terms" type="checkbox" required />
             <span>I agree to the <a href="#" class="small" style="color:#dff9ff;">Terms of Service</a> and
               <a href="#" class="small" style="color:#dff9ff;">Privacy Policy</a>.
             </span>
@@ -203,7 +209,7 @@
         <div class="actions">
           <button class="btn" type="submit">Create account</button>
           
-          <a href="login.html" class="btn secondary" role="button">Back to login</a>
+          <a href="login.html" class="btn secondary">Back to login</a>
         </div>
 
         <p class="small" style="margin-top:10px;text-align:center;">
