@@ -209,7 +209,7 @@
       cursor: pointer;
       border: none;
       box-shadow: 0 2px 8px rgba(122,0,255,0.10);
-      transition: transform 0.15s, box-shadow 0.15s;
+      transition:box-shadow 0.15s;
     }
     .xbox:hover, .playstation:hover, .windows:hover, .macos:hover {
       transform: scale(1.08);
@@ -351,38 +351,7 @@
     .chat-container:focus-within .chat-box {
       display: block;
     }
-    @media (max-width: 1024px) {
-      .subtitle { font-size: 48px; }
-      .title { font-size: 32px; }
-      .content-wrap video { height: 320px; }
-      .section-flex { gap: 18px; }
-    }
-    @media (max-width: 768px) {
-      .navbar {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px 8px;
-      }
-      .search-bar input {
-        width: 100px;
-      }
-      .imagewolverine {
-        height: 40vh;
-      }
-      .title-wrap {
-        padding: 18px 8px;
-      }
-      .subtitle { font-size: 32px; }
-      .title { font-size: 22px; }
-      .content-section {
-        padding: 18px 0 12px 0;
-        margin: 12px auto;
-      }
-      .content-wrap video { height: 180px; }
-      .chat-box { width: 180px; padding: 8px; }
-      .section-flex { gap: 8px; }
-    }
+
   </style>
 </head>
 <body>
@@ -479,7 +448,7 @@
     </section>
 
     <section class="section-flex">
-      <div style="flex: 1 1 320px; min-width: 260px; max-width: 420px;">
+      <div style="flex:1 1 320px; min-width: 260px; max-width: 420px;">
         <h2 style="text-align: center;">FACE THE METAL TITANS</h2>
         <p>
           Stand your ground against machines built to erase you. Every clash is a test of strength, resilience, and unbreakable instinct.<br>
