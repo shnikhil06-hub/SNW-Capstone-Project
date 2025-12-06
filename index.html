@@ -485,5 +485,27 @@
   <footer style="text-align: center; padding: 20px 0; background: rgba(9,16,35,0.9); border-top: 1px solid rgba(0,194,255,0.09); box-shadow: 0 -2px 8px rgba(0,194,255,0.08); margin-top: 40px;">
     <p style="color: #888;">&copy; 2025 Wolverine. All rights reserved By Nikhil.</p>
   </footer>
+  <script>
+    const searchInput = document.querySelector(".search-bar input");
+    const searchBtn = document.querySelector(".search-button");
+
+    searchBtn.addEventListener("click", () => {
+    const query = searchInput.value.trim();
+    if (query.length > 0) {
+    alert("You searched for: " + query);
+    } 
+    else {
+    alert("Please type something!");
+    }
+    });
+    const platformButtons = document.querySelectorAll(".platform-buttons button");
+
+    platformButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+    alert("Redirecting to " + btn.innerText + " download page.");
+    });
+    });
+
+  </script>
 </body>
 </html>
