@@ -1,216 +1,323 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Create Account — Wolverine</title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Create Account — Wolverine</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
 
-    body {
-      background: linear-gradient(180deg, #060712 0%, #0b1220 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 32px;
-      color: #e6eef8;
-    }
+      body {
+        background: linear-gradient(180deg, #060712 0%, #0b1220 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        color: #e6eef8;
+      }
 
-    .container{
-      width: 100%;
-      max-width: 980px;
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 28px;
-      align-items: start;
-    }
+      .container {
+        width: 100%;
+        max-width: 980px;
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 28px;
+        align-items: start;
+      }
 
-    .hero{
-      padding: 28px 32px;
-      border-radius: 12px;
-      background: transparent;
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-    }
+      .hero {
+        padding: 28px 32px;
+        border-radius: 12px;
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
 
-    .hero h1{
-      font-size:28px;
-      margin:0;
-      color:#dff9ff;
-    }
-    .hero p{
-      margin:0;
-      color:#9fb3c9;
-      font-size:15px;
-    }
+      .hero h1 {
+        font-size: 28px;
+        margin: 0;
+        color: #dff9ff;
+      }
+      .hero p {
+        color: #9fb3c9;
+        font-size: 15px;
+      }
 
-    .hero-list{
-      margin-top:12px;
-      padding-left:18px;
-      color:#9fb3c9;
-      font-size:14px;
-    }
+      .card {
+        background: #091023;
+        padding: 28px;
+        border-radius: 14px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(0, 194, 255, 0.07);
+      }
+      .card h2 {
+        margin: 0 0 6px 0;
+        color: #e6f7ff;
+        font-size: 18px;
+      }
 
-    .card{
-      background: #091023;
-      padding:28px;
-      border-radius:14px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-      border: 1px solid rgba(0,194,255,0.07);
-    }
-    .card h2 { margin:0 0 6px 0; 
-        color:#e6f7ff; 
-        font-size:18px; }
+      .accent-line {
+        height: 6px;
+        border-radius: 6px;
+        background: linear-gradient(90deg, #00c2ff, #7a00ff);
+        margin-top: 8px;
+      }
 
-    .accent-line{
-      height:6px;
-      border-radius:6px;
-      background: linear-gradient(90deg,#00c2ff,#7a00ff);
-      margin-top:8px;
-    }
+      .muted {
+        color: #93a6bd;
+        font-size: 13px;
+      }
+      .error {
+        color: #ff6b6b;
+        font-size: 13px;
+      }
 
-    .muted{ color:#93a6bd; 
-        font-size:13px; }
-    .error{ color:#ff6b6b;
-         font-size:13px; }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      label {
+        font-size: 13px;
+        color: #cfeefc;
+        margin-bottom: 6px;
+        display: block;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
 
-    
-    form{ display:flex;
-         flex-direction:column; 
-         gap:12px; 
-         margin-top:12px; 
-        }
-    label{ font-size:13px; 
-        color:#cfeefc; 
-        margin-bottom:6px; 
-        display:block; 
-    }
-    .field{ display:flex; 
-        flex-direction:column; 
-        gap:6px; 
-    }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(10, 16, 28, 0.6);
+        color: #e6f7ff;
+        font-size: 15px;
+        
+        
+      }
+      input:focus {
+        border-color: rgba(0, 194, 255, 0.45);
+        box-shadow: 0 0 0 4px rgba(0, 194, 255, 0.06);
+      }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-      width:100%;
-      padding:12px 14px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.06);
-      background: rgba(10,16,28,0.6);
-      color: #e6f7ff;
-      font-size:15px;
-      outline: none;
-      transition: box-shadow .15s, border-color .15s;
-    }
-    input:focus {
-      border-color: rgba(0,194,255,0.45);
-      box-shadow: 0 0 0 4px rgba(0,194,255,0.06);
-    }
+      .row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .chk {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+      }
 
-    .row{ display:flex; 
-      align-items:flex-start; 
-      justify-content:space-between; 
-      gap:8px; }
-    .chk{ 
-      display:flex; 
-      gap:8px; 
-      align-items:flex-start; }
+      .chk input {
+        margin-top: 3px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 0;
+        background: linear-gradient(90deg, #00c2ff, #7a00ff);
+        color: #061322;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 15px;
+        text-decoration: none;
+        text-align: center;
+        transition: transform 0.08s ease, opacity 0.08s ease;
+        user-select: none;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+      .btn:active {
+        transform: translateY(0);
+      }
 
-    .chk input{ margin-top:3px; }
-    .btn{
-      display:inline-block;
-      padding:12px 14px;
-      border-radius:10px;
-      border:0;
-      background: linear-gradient(90deg,#00c2ff,#7a00ff);
-      color:#061322;
-      font-weight:700;
-      cursor:pointer;
-      font-size:15px;
-      text-decoration:none;
-      text-align:center;
-      transition: transform 0.08s ease, opacity 0.08s ease;
-      user-select: none;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn:active { transform: translateY(0); }
+      .btn.secondary {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        color: #d6eaf6;
+      }
 
-    .btn.secondary{
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.06);
-      color:#d6eaf6;
-    }
+      .small {
+        font-size: 13px;
+        color: #93a6bd;
+      }
 
-    .small{ font-size:13px; color:#93a6bd; }
-
-    .actions{
-      margin-top:8px;
-      display:flex;
-      gap:8px;
-    }
-  </style>
-</head>
-<body>
-  <main class="container">
-    <section class="hero" >
-      <h1 id="brandHeading">Wolverine</h1>
-      <p>Create your command profile to track ranks, unlocks and cross-device progress.</p>
-    </section>
-
-    <aside class="card">
-      <h2 id="signupHeading">Create Account</h2>
-      <div class="accent-line"></div>
-      <p class="muted" style="margin-bottom:12px">
-        Choose a unique tag, then secure your account with an email and password.
-      </p>
-
-      <form id="signupForm" action="#" method="post">
-        <div class="field">
-          <label for="playerName">Player tag</label>
-          <input id="playerName" name="playerName" type="text" placeholder="Wolverine_01" required />
-        </div>
-
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@email.com" required />
-        </div>
-
-        <div class="field">
-          <label for="password">Password</label>
-          <input id="password" name="password" type="password" placeholder="Create a strong password" required />
-        </div>
-
-        <div class="field">
-          <label for="confirmPassword">Confirm password</label>
-          <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Repeat your password" required />
-        </div>
-
-        <div class="row small" style="margin-top:4px;">
-          <label class="chk">
-            <input id="terms" type="checkbox" required />
-            <span>I agree to the <a href="#" class="small" style="color:#dff9ff;">Terms of Service</a> and
-              <a href="#" class="small" style="color:#dff9ff;">Privacy Policy</a>.
-            </span>
-          </label>
-        </div>
-
-        <div class="actions">
-          <button class="btn" type="submit">Create account</button>
-          
-          <a href="login.html" class="btn secondary">Back to login</a>
-        </div>
-
-        <p class="small" style="margin-top:10px;text-align:center;">
-          Already have a profile? <a href="login.html" style="color:#dff9ff;text-decoration:none;">Sign in</a>
+      .actions {
+        margin-top: 8px;
+        display: flex;
+        gap: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <h1 id="brandHeading">Wolverine</h1>
+        <p>
+          Create your command profile to track ranks, unlocks and cross-device
+          progress.
         </p>
-      </form>
-    </aside>
-  </main>
-</body>
+      </section>
+
+      <aside class="card">
+        <h2 id="signupHeading">Create Account</h2>
+        <div class="accent-line"></div>
+        <p class="muted" style="margin-bottom: 12px">
+          Choose a unique tag, then secure your account with an email and
+          password.
+        </p>
+
+        <form id="signupForm" action="#" method="post">
+          <div class="field">
+            <label for="playerName">Player tag</label>
+            <input
+              id="playerName"
+              name="playerName"
+              type="text"
+              placeholder="Wolverine_01"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@email.com"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Create a strong password"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="confirmPassword">Confirm password</label>
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              placeholder="Repeat your password"
+              required
+            />
+          </div>
+
+          <div class="row small" style="margin-top: 4px">
+            <label class="chk">
+              <input id="terms" type="checkbox" required />
+              <span>I agree to the
+                <a href="#" class="small" style="color: #dff9ff">Terms of Service</a>
+                and
+                <a href="#" class="small" style="color: #dff9ff"
+                  >Privacy Policy</a>.
+              </span>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button class="btn" type="submit">Create account</button>
+
+            <a href="login.html" class="btn secondary">Back to login</a>
+          </div>
+
+          <p class="small" style="margin-top: 10px; text-align: center">
+            Already have a profile?
+            <a href="login.html" style="color: #dff9ff; text-decoration: none"
+              >Sign in</a
+            >
+          </p>
+        </form>
+      </aside>
+    </main>
+  </body>
+  <script>
+    const form = document.getElementById("signupForm");
+    const nameInput = document.getElementById("playerName");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const confirmInput = document.getElementById("confirmPassword");
+    const termsInput = document.getElementById("terms");
+
+    function validateName() {
+      const name = nameInput.value.trim();
+      return name !== "" && name.length >= 3;
+    }
+
+    function validateEmail() {
+      const email = emailInput.value.trim();
+      return email !== "" && email.includes("@") && email.includes(".");
+    }
+
+    function validatePassword() {
+      const pwd = passwordInput.value.trim();
+      return pwd !== "" && pwd.length >= 6;
+    }
+
+    function validateConfirm() {
+      return confirmInput.value.trim() === passwordInput.value.trim();
+    }
+
+    form.addEventListener("submit", function () {
+      let valid = true;
+
+      if (!validateName()) {
+        alert("Player tag must be at least 3 characters.");
+        valid = false;
+      }
+
+      if (!validateEmail()) {
+        alert("Enter a valid email.");
+        valid = false;
+      }
+
+      if (!validatePassword()) {
+        alert("Password must be 6 or more characters.");
+        valid = false;
+      }
+
+      if (!validateConfirm()) {
+        alert("Passwords do not match.");
+        valid = false;
+      }
+
+      if (!termsInput.checked) {
+        alert("You must agree to Terms & Privacy Policy.");
+        valid = false;
+      }
+
+      if (valid) {
+        alert("Account created successfully!");
+      }
+    });
+  </script>
 </html>

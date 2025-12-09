@@ -175,6 +175,55 @@
       </form>
     </aside>
   </main>
+  <script>
+    const form = document.getElementById('loginForm');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+
+const emailError = document.getElementById('emailError');
+const passwordError = document.getElementById('pwdError');
+const formMessage = document.getElementById('formMessage');
+
+function validateEmail() {
+  const email = emailInput.value.trim();
+
+  if (email === '' || !email.includes('@') || !email.includes('.')) {
+    emailError.textContent = 'Enter a valid email address';
+    emailError.style.display = 'block';
+    return false;
+  }
+
+  emailError.textContent = '';
+  emailError.style.display = 'none';
+  return true;
+}
+
+function validatePassword() {
+  const password = passwordInput.value.trim();
+
+  if (password === '' || password.length < 6) {
+    passwordError.textContent = 'Password must be at least 6 characters';
+    passwordError.style.display = 'block';
+    return false;
+  }
+
+  passwordError.textContent = '';
+  passwordError.style.display = 'none';
+  return true;
+}
+
+form.addEventListener('submit', function () {
+  const isEmailValid = validateEmail();
+  const isPasswordValid = validatePassword();
+
+  if (isEmailValid && isPasswordValid) {
+    formMessage.textContent = 'Login successful!';
+    formMessage.style.display = 'block';
+    formMessage.style.color = '#00ff9d';
+  }
+});
+
+  </script>
 
   
 </body>
